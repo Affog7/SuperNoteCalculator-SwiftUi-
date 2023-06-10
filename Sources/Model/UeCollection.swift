@@ -6,7 +6,12 @@
 //
 
 import Foundation
-struct UeCollection : Identifiable{
+struct UeCollection : Identifiable, Equatable {
+    
+    public static func == (lhs: UeCollection, rhs: UeCollection) -> Bool {
+            lhs.id == rhs.id
+        }
+    
     var id : UUID
   
     var nom: String

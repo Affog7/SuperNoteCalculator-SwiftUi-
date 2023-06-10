@@ -9,16 +9,16 @@ import SwiftUI
 
 struct MatiereUI: View {
     @ObservedObject var matiere : MatiereVM
-     @State public var islocked : Bool = false
+    @ObservedObject var ue : UeVM
+     @State   var islocked : Bool = true
     var body: some View {
         VStack(alignment:.leading){
             Divider()
             HStack(spacing: 20){
-                Text(matiere.model.name ).bold().font(.caption).padding()
+                Text(matiere.name ).bold().font(.caption).padding()
                 
             }
             
-             
          
             HStack(spacing: 15){
                 Button(action: {
@@ -27,13 +27,13 @@ struct MatiereUI: View {
                                           
                     Image(systemName: islocked ?  "lock.fill" : "lock.open.fill")
                 }
-                ExpandingCapsuleViewMatiere(mat: matiere, islock: islocked).frame(width:50,height: 20)
+                ExpandingCapsuleViewMatiere(matiere: matiere,  ue : ue,islock: islocked).frame(width:50,height: 20)
 
  Spacer()
-                Text(matiere.model.moyenne.description)
+                Text(matiere.moyenne.description)
                 
                 Spacer()
-                Text(matiere.model.coef.description)
+                Text(matiere.coef.description)
                 
             }
             
@@ -43,6 +43,6 @@ struct MatiereUI: View {
 
 struct Matiere_Previews: PreviewProvider {
     static var previews: some View {
-        MatiereUI(matiere: MatiereVM(withMat: Matiere(name : "Projet",moy: 12, coef: 9)))
+        MatiereUI(matiere: MatiereVM(withMat: Matiere(name : "Projet",moy: 12, coef: 9)), ue: UeVM(withUe: DataStub().loadUeStage_Proj()[0]), islocked: true)
     }
 }

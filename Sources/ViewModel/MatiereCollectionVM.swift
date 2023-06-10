@@ -6,57 +6,57 @@
 //
 
 import Foundation
-extension MatiereCollection  {
-    struct Data :Identifiable {
-        let id : UUID
-      
-        var nom: String
-        var matieres: [Matiere]
+ 
+class MatiereCollectionVM : ObservableObject,Identifiable,Equatable {
+    static func == (lhs: MatiereCollectionVM, rhs: MatiereCollectionVM) -> Bool {
+        lhs.id == rhs.id
     }
     
-    var data : Data {
-        Data(
-            id : self.id,
-             nom:self.nom ,
-            matieres: self.matieres)
-    }
-    
-    
-   mutating func update(from data : Data){
-        guard data.id == self.id else {return}
-        self.nom = data.nom
-       self.matieres = data.matieres
-    }
-}
+       public var id: UUID { model.id }
 
-class MatiereCollectionVM : ObservableObject{
-    var original : MatiereCollection //= UeCollection(nom: "Mon UE", ues: DataStub().load())
-    @Published var model : MatiereCollection.Data
-    @Published var isEditing : Bool = false
+    /*
+     var id : UUID
+   
+     var nom: String
+     var matieres: [Matiere]
+     */
+    
+    @Published var model : MatiereCollection  = MatiereCollection(nom: "", matieres: []){
+        didSet{
+            if self.model.nom != self.nom {
+                self.nom = self.model.nom
+            }
+            if !self.model.matieres.compare(to: self.someMatieresVM.map({$0.model})){
+                            self.someMatieresVM = self.model.matieres.map({MatiereVM(withMat: $0)})
+                        }
+        }
+    }
+  
+    @Published var nom: String = "" {
+        didSet {
+            if self.model.nom != self.nom {
+                self.model.nom = self.nom
+            }
+        }
+    }
+    
+    @Published var someMatieresVM: [MatiereVM] = [] {
+        didSet {
+            let someModelMatiere = self.someMatieresVM.map({$0.model})
+                        if !self.model.matieres.compare(to: someModelMatiere){
+                            self.model.matieres = someMatieresVM.map({$0.model})
+                        }
+            print("vjgjjh")
+        }
+    }
+
     
     init(withMat matieres : MatiereCollection) {
-        self.original = matieres
-        self.model = original.data
-    }
-    
-    func onEditing(){
-        model = original.data
-        isEditing = true
+         self.model = matieres
     }
     
     
-    func onEdited(isCancelled : Bool = false){
-        if(!isCancelled){
-            original.update(from: model)
-        }
-        isEditing = false
-        model = original.data
-    }
-    
-    
-    func addUe(_ mat: Matiere) {
-        model.matieres.append(mat)
-    }
+     
     
    
     

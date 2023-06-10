@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Matiere : Identifiable{
+struct Matiere : Identifiable, Equatable{
+    
+    static func == (lhs: Matiere, rhs: Matiere) -> Bool {
+        lhs.id == rhs.id
+    }
     let id: UUID
     var name: String
     var moyenne: Float

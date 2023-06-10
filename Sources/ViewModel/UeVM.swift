@@ -6,65 +6,97 @@
 //
 
 import Foundation
-extension Ue {
-    
-    struct Data :Identifiable {
-        
-        let id : UUID
-        var code: String
-        
-        var nom: String
-        var coef: Int
-        
-        var matieres: [Matiere]
-        
-        var totalMoyenne: Double {
-            return Double(matieres.reduce(0) { $0 + $1.moyenne }) / Double(matieres.count)
-            }
-    }
-    
-    var data : Data {
-        Data(
-            id : self.id,
-            code :self.code ,
-             nom :self.nom ,
-             coef :self.coef ,
-            matieres : self.matieres)
-    }
-    
-    
-   mutating func update(from data : Data){
-        guard data.id == self.id else {return}
-        self.code = data.code
-        self.nom = data.nom
-        self.coef = data.coef
-        self.matieres = data.matieres
-    }
-}
+ 
 
-class UeVM : ObservableObject {
-    var original : Ue //= Ue(code: "66", nom: "hgg", matieres: [])
-    @Published var model : Ue.Data
-    @Published var isEditing : Bool = false
-    
-    init(withUe ue : Ue) {
-        self.original = ue
-        self.model = original.data
+class UeVM : ObservableObject, Identifiable, Equatable {
+    static func == (lhs: UeVM, rhs: UeVM) -> Bool {
+        lhs.id == rhs.id
     }
     
-    func onEditing(){
-        model = original.data
-        isEditing = true
-    }
-    
-    
-    func onEdited(isCancelled : Bool = false){
-        if(!isCancelled){
-            original.update(from: model)
+   /* public let id : UUID
+     var nom: String
+    var coef : Int
+    var matieres: [Matiere]
+*/
+    @Published  var totalMoyenne: Double = 0 {
+        didSet{
+            var moy = updateTotalMoyenne()
+            if moy != self.totalMoyenne {
+                self.totalMoyenne = moy
+            }
         }
-        isEditing = false
-        model = original.data
     }
+    
+    public func updateTotalMoyenne()->Double {
+        return Double(someMatieresVM.reduce(0) { $0 + $1.moyenne }) / Double(someMatieresVM.count)
+    }
+    
+    @Published var model : Ue = DataStub().load()[0]{
+        didSet{
+            if self.model.nom != self.nom {
+                self.nom = self.model.nom
+            }
+            if self.model.coef != self.coef {
+                self.coef = self.model.coef
+            }
+            if !self.model.matieres.compare(to: self.someMatieresVM.map({$0.model})){
+                            self.someMatieresVM = self.model.matieres.map({MatiereVM(withMat: $0)})
+                        }
+            var moy = updateTotalMoyenne()
+            if moy != self.totalMoyenne {
+                self.totalMoyenne = moy
+            }
+
+        }
+    }
+ 
+    init(withUe ue : Ue) {
+        self.model = ue
+         
+     }
+    public var id: UUID { model.id }
+
+    @Published
+    var nom: String = "" {
+        didSet {
+            if self.model.nom != self.nom {
+                self.model.nom = self.nom
+            }
+        }
+    }
+    
+    @Published
+    var coef: Int = 0 {
+        didSet {
+            if self.model.coef != self.coef {
+                self.model.coef = self.coef
+             }
+        }
+    }
+    
+    
+    @Published var someMatieresVM: [MatiereVM] = [] {
+        didSet {
+            let someModelMatiere = self.someMatieresVM.map({$0.model})
+                        if !self.model.matieres.compare(to: someModelMatiere){
+                            self.model.matieres = someModelMatiere.map({$0})
+                        
+            }
+            
+            print("vjgjjh")
+          }
+    }
+
+    /*@Published var matieresVM: [MatiereVM] = [] {
+            didSet {
+                let someModelmatiere = self.matieresVM.map({$0.model})
+                if !self.model.matieres.compare(to: someModelmatiere ){
+                    self.model.matieres = matieresVM.map({$0.model})
+                }
+            }
+        }*/
+
+  
     
     
 }

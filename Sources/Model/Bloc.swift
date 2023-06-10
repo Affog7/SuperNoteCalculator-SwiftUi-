@@ -6,7 +6,11 @@
 //
 
 import Foundation
-public class Bloc : Identifiable{
+public class Bloc : Identifiable, Equatable{
+    public static func == (lhs: Bloc, rhs: Bloc) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var nom : String
     
     var ues : [Ue]

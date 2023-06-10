@@ -6,55 +6,71 @@
 //
 
 import Foundation
-extension Matiere {
-    struct Data :Identifiable {
-        let id: UUID
-        var name: String
-        var moyenne: Float
-        var  coef : Int
-    }
-    
-    var data : Data {
-        Data(
-            id : self.id,
-            name:self.name,
-            moyenne: self.moyenne,
-             coef:self.coef )
-    }
-    
-    
-   mutating func update(from data : Data){
-        guard data.id == self.id else {return}
-         
-        self.name = data.name
-        self.coef = data.coef
-        self.moyenne = data.moyenne
-    }
-}
+ 
 
-class MatiereVM : ObservableObject{
-    var original : Matiere //= Ue(code: "66", nom: "hgg", matieres: [])
-    @Published var model : Matiere.Data
-    @Published var isEditing : Bool = false
+class MatiereVM : ObservableObject, Identifiable, Equatable {
+    static func == (lhs: MatiereVM, rhs: MatiereVM) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    public var id: UUID { model.id }
+     @Published var model : Matiere = Matiere(name: "", moy: 0, coef: 0)
+    {
+        
+        didSet {
+                    if self.name != self.model.name {
+                        self.name = self.model.name
+                    };
+                    if self.moyenne != self.model.moyenne {
+                                self.moyenne = self.model.moyenne
+                            };
+                    if self.coef != self.model.coef {
+                                self.coef = self.model.coef
+                            }
+                    
+                }
+            }
+    /**
+     
+     var name: String
+     var moyenne: Float
+     var  coef : Int
+     */
+    @Published
+    var name: String = "" {
+        didSet {
+            if self.model.name != self.name {
+                self.model.name = self.name
+            }
+        }
+    }
+
+    @Published
+    var moyenne: Float=0 {
+        didSet {
+            if self.model.moyenne != self.moyenne {
+                self.model.moyenne = self.moyenne
+           
+            }
+        }
+    }
+    
+    @Published
+    var coef: Int = 0 {
+        didSet {
+            if self.model.coef != self.coef {
+                self.model.coef = self.coef
+            }
+        }
+    }
+    
     
     init(withMat mat : Matiere) {
-        self.original = mat
-        self.model = original.data
-    }
-    
-    func onEditing(){
-        model = original.data
-        isEditing = true
+        
+        self.model = mat
     }
     
     
-    func onEdited(isCancelled : Bool = false){
-        if(!isCancelled){
-            original.update(from: model)
-        }
-        isEditing = false
-        model = original.data
-    }
     
     
 }

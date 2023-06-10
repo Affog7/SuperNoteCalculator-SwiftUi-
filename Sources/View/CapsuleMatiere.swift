@@ -1,17 +1,17 @@
 import SwiftUI
 import UIKit
 
-import SwiftUI
-import UIKit
+ 
 
  struct ExpandingCapsuleViewMatiere: View {
-    @ObservedObject   var matiere : MatiereVM
+    @ObservedObject    var matiere : MatiereVM
+     @ObservedObject   var ue : UeVM
       var islock : Bool = true
     @GestureState private var dragState = DragState.inactive
      @State private var capsuleWidth: CGFloat = 25.0
-    private var widthMax = 100.0
-    private var widthMin = 5.0
-    private enum DragState {
+      var widthMax = 100.0
+      var widthMin = 5.0
+      enum DragState {
         case inactive
         case dragging(translation: CGSize)
         
@@ -26,21 +26,16 @@ import UIKit
     }
     
      
-     init(mat: MatiereVM, islock : Bool = true) {
-         self.matiere = mat
-         self.islock = islock
-        capsuleWidth = CGFloat(mat.model.moyenne) * 5
-         //print(capsuleWidth/5)
-     }
      
-     var body: some View {
+     
+     public var body: some View {
         let dragGesture = DragGesture()
              
             .onEnded { value in
                 let dragThreshold: CGFloat = 0.50
                 let dragTranslation = value.translation.width
                 
-                if CGFloat(matiere.model.moyenne)*5 <= 100 {
+                if CGFloat(matiere.moyenne)*5 <= 100 {
                     if dragTranslation > dragThreshold {
                         capsuleWidth += (dragTranslation  - dragThreshold)
                         updateMoy()
@@ -56,8 +51,8 @@ import UIKit
         
         return GeometryReader { geometry in
             Capsule()
-                .frame(width: Double(matiere.model.moyenne * 5) >= widthMax ? 100.0 : CGFloat(matiere.model.moyenne) * 5 + 2 , height: 22)
-                .foregroundColor(CGFloat(matiere.model.moyenne) * 5    < 50 ? .red : .green)
+                .frame(width: Double(matiere.moyenne * 5) >= widthMax ? 100.0 : CGFloat(matiere.moyenne) * 5 + 2 , height: 22)
+                .foregroundColor(CGFloat(matiere.moyenne) * 5    < 50 ? .red : .green)
                 .gesture( islock ? DragGesture().onEnded({_ in }) : dragGesture)
                 .animation(.spring())
                 .offset(x: dragState.translation.width, y: 0)
@@ -70,9 +65,10 @@ import UIKit
      
      
      private func updateMoy(){
-         matiere.model.moyenne +=  Float(capsuleWidth)  / 5
-         if matiere.model.moyenne > 20 { matiere.model.moyenne = 20 }
-         if matiere.model.moyenne < 0 { matiere.model.moyenne = 0 }
+         self.matiere.moyenne +=  Float(capsuleWidth)  / 5
+         if matiere.moyenne > 20 { matiere.moyenne = 20 }
+         if matiere.moyenne < 0 { matiere.moyenne = 0 }
+         ue.totalMoyenne = ue.updateTotalMoyenne()
      }
 }
 
@@ -82,6 +78,6 @@ import UIKit
 struct CapsuleMatiere_Previews: PreviewProvider {
     static var previews: some View {
         
-        ExpandingCapsuleViewMatiere(mat:   MatiereVM(withMat: Matiere(name: "Projet", moy: 12, coef: 9)))
+        ExpandingCapsuleViewMatiere(matiere: MatiereVM(withMat: Matiere(name: "Projet", moy: 12, coef: 9)),ue: UeVM(withUe: DataStub().loadUeStage_Proj()[0]))
     }
 }

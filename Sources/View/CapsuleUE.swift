@@ -79,6 +79,6 @@ struct CapsuleV_Previews: PreviewProvider {
     static var previews: some View {
         
         
-        ExpandingCapsuleView(ue : UeVM(withUe: Ue(code: "5", nom: "UE 2", matieres: DataStub().loadMartiereUE2(),coef: 9)))
+        ExpandingCapsuleView(ue : UeVM(withUe: Ue( nom: "UE 2", matieres: DataStub().loadMartiereUE2(),coef: 9)))
     }
 }

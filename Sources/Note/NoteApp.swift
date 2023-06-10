@@ -13,7 +13,7 @@ struct NoteApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Home(uesM: ues)
+            Home(manager: ManagerVM(withUes: DataStub().load()))
         }
     }
 }
