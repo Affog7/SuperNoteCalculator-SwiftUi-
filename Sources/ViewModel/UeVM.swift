@@ -18,9 +18,9 @@ class UeVM : ObservableObject, Identifiable, Equatable {
     var coef : Int
     var matieres: [Matiere]
 */
-    @Published  var totalMoyenne: Double = 0 {
+    @Published  var totalMoyenne: Double = 0.0 {
         didSet{
-            var moy = updateTotalMoyenne()
+            let moy = updateTotalMoyenne()
             if moy != self.totalMoyenne {
                 self.totalMoyenne = moy
             }
@@ -28,7 +28,12 @@ class UeVM : ObservableObject, Identifiable, Equatable {
     }
     
     public func updateTotalMoyenne()->Double {
-        return Double(someMatieresVM.reduce(0) { $0 + $1.moyenne }) / Double(someMatieresVM.count)
+ 
+
+        let totalMoyenne = someMatieresVM.reduce(0.0) { $0 + Double($1.moyenne) * Double($1.coef) }
+        let totalCoef = someMatieresVM.reduce(0.0) { $0 + Double($1.coef) }
+        return totalMoyenne / totalCoef
+
     }
     
     @Published var model : Ue = DataStub().load()[0]{
@@ -41,8 +46,8 @@ class UeVM : ObservableObject, Identifiable, Equatable {
             }
             if !self.model.matieres.compare(to: self.someMatieresVM.map({$0.model})){
                             self.someMatieresVM = self.model.matieres.map({MatiereVM(withMat: $0)})
-                        }
-            var moy = updateTotalMoyenne()
+            }
+            let moy = updateTotalMoyenne()
             if moy != self.totalMoyenne {
                 self.totalMoyenne = moy
             }
@@ -83,7 +88,7 @@ class UeVM : ObservableObject, Identifiable, Equatable {
                         
             }
             
-            print("vjgjjh")
+            
           }
     }
 
