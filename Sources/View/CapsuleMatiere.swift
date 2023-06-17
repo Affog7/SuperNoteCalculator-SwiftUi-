@@ -6,6 +6,7 @@ import UIKit
  struct ExpandingCapsuleViewMatiere: View {
     @ObservedObject    var matiere : MatiereVM
      @ObservedObject   var ue : UeVM
+     @ObservedObject   var bloc : BlocVM
       var islock : Bool = true
     @GestureState private var dragState = DragState.inactive
      @State private var capsuleWidth: CGFloat = 25.0
@@ -32,14 +33,14 @@ import UIKit
         let dragGesture = DragGesture()
              
             .onEnded { value in
-                let dragThreshold: CGFloat = 0.50
+                let dragThreshold: CGFloat = 0.02
                 let dragTranslation = value.translation.width
                 
                 if CGFloat(matiere.moyenne)*5 <= 100 {
                     if dragTranslation > dragThreshold {
                         capsuleWidth += (dragTranslation  - dragThreshold)
                         updateMoy()
-                       print(capsuleWidth/5)
+                      // print(capsuleWidth/5)
                     } else if dragTranslation < -dragThreshold {
                         
                             capsuleWidth =  dragTranslation/5 - dragThreshold
@@ -69,6 +70,11 @@ import UIKit
          if matiere.moyenne > 20 { matiere.moyenne = 20 }
          if matiere.moyenne < 0 { matiere.moyenne = 0 }
          ue.totalMoyenne = ue.updateTotalMoyenne()
+         bloc.totalMoyenne = bloc.updateTotalMoyenne()
+      
+         
+         
+         print(bloc.nom)
      }
 }
 
@@ -78,6 +84,7 @@ import UIKit
 struct CapsuleMatiere_Previews: PreviewProvider {
     static var previews: some View {
         
-        ExpandingCapsuleViewMatiere(matiere: MatiereVM(withMat: Matiere(name: "Projet", moy: 12, coef: 9)),ue: UeVM(withUe: DataStub().loadUeStage_Proj()[0]))
+        ExpandingCapsuleViewMatiere(matiere: MatiereVM(withMat: Matiere(name: "Projet", moy: 12, coef: 9)),ue: UeVM(withUe: DataStub().loadUeStage_Proj()[0]),
+                                    bloc: BlocVM(withBloc: Bloc(nom: "", ues: DataStub().loadUeStage_Proj())) )
     }
 }

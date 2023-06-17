@@ -12,12 +12,13 @@ public class Bloc : Identifiable, Equatable{
     }
     
     var nom : String
-    
+    public var id : UUID
     var ues : [Ue]
     var total : Double {
         return Double(ues.reduce(0) { $0 + $1.totalMoyenne }) / Double(ues.count)
         }
     init(nom: String,  ues: [Ue]) {
+        self.id = UUID()
         self.nom = nom
         self.ues = ues
     }

@@ -9,17 +9,14 @@ import SwiftUI
 
 struct Home: View {
    // @State public var ues  = DataStub().load()
-     @StateObject var manager: ManagerVM
+    @StateObject  var manager: ManagerVM
     var body: some View {
         NavigationView{
              
            VStack(alignment : .leading){
                     // Block
-                    
-                Block(blocks: [
-                    Bloc(nom: "Total", ues: DataStub().load()),
-                    Bloc(nom: "Stage/Projet", ues: DataStub().loadUeStage_Proj()) ]
-                )
+                Block(manager: manager )
+ 
                 
                VStack(alignment : .leading){
                    HStack(alignment:.bottom){
@@ -30,9 +27,14 @@ struct Home: View {
                        ScrollView{
                            //UE
                            
-                           ForEach($manager.ues) { $item in
-                          
-                               UE(ue:  item)
+                           ForEach(manager.blocs) { item in
+                                ForEach(item.someUesVM) {
+                                   ue in
+                               
+                                   UE(bloc: item, ue:  ue)
+                               }
+                               
+                              
                               
                            }
                            
@@ -44,15 +46,13 @@ struct Home: View {
                 
                  
         }
-        
-
        
     }
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        let managerVM = ManagerVM(withUes: DataStub().load())
+        let managerVM = ManagerVM(withBlocs: [BlocVM(withBloc: Bloc(nom: "Total", ues: DataStub().load())),BlocVM(withBloc: Bloc(nom: "Projet", ues: DataStub().loadUeStage_Proj()))])
         Home(manager: managerVM )
     }
 }

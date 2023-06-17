@@ -14,9 +14,7 @@ public struct DataStub : DataManager{
             Ue( nom: "Insertion Professionnelle", matieres: loadMartiereUE3(),coef: 6),
             Ue( nom: "Technologies Mobiles 1", matieres: loadMartiereUE4(),coef:9),
             Ue( nom: "Technologies Mobiles 2", matieres: loadMartiereUE5(),coef:9),
-            Ue( nom: "Projet", matieres: loadMartiereUE6(),coef: 9),
-            Ue( nom: "Stage", matieres: loadMartiereUE7(),coef: 15)
-           
+             
         ]
     }
     
@@ -24,15 +22,27 @@ public struct DataStub : DataManager{
        
     }
     
+    var ue_proj : Ue {
+       return Ue( nom: "Projet", matieres: loadMartiereUE6(),coef: 9)}
+    var ue_stage : Ue {
+        return Ue( nom: "Stage", matieres: loadMartiereUE7(),coef: 15)
+    }
     
+    
+    var ue_projvm : UeVM {
+        return UeVM(withUe: ue_proj)}
+    var ue_stagevm : UeVM {
+        return UeVM(withUe: ue_stage)
+    }
+   
     public init(){}
     
     
     
     public func loadUeStage_Proj()->[Ue]{
         return [
-            Ue( nom: "Projet", matieres: loadMartiereUE6(),coef: 9),
-            Ue( nom: "Stage", matieres: loadMartiereUE7(),coef: 15)
+            ue_proj,
+            ue_stage
            
         ]
     }

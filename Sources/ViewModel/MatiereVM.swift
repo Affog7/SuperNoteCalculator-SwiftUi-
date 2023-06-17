@@ -9,6 +9,28 @@ import Foundation
  
 
 class MatiereVM : ObservableObject, Identifiable, Equatable {
+    
+   
+        private var notificationFuncs: [AnyHashable:(MatiereVM) -> ()] = [:]
+        
+    
+    public func subscribe(with subscriber: AnyHashable, andWithFunction function:@escaping (MatiereVM) -> ()) {
+        notificationFuncs[subscriber] = function
+       }
+    
+    public func unsubscribe(with subscriber: AnyHashable) {
+            notificationFuncs.removeValue(forKey: subscriber)
+        }
+
+    
+    
+  ///  private var copy : MatiereVM
+    func notifyChanged(){
+        for f in notificationFuncs.values {
+                f(self)
+            }
+        }
+    
     static func == (lhs: MatiereVM, rhs: MatiereVM) -> Bool {
         lhs.id == rhs.id
     }
@@ -27,7 +49,7 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
                     if self.coef != self.model.coef {
                                 self.coef = self.model.coef
                             }
-                    
+            self.notifyChanged()
                 }
             }
     /**
@@ -42,7 +64,7 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
             if self.model.name != self.name {
                 self.model.name = self.name
             }
-        }
+         }
     }
 
     @Published
@@ -52,8 +74,8 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
                 self.model.moyenne = self.moyenne
            
             }
-        }
-    }
+         }
+     }
     
     @Published
     var coef: Int = 0 {
@@ -61,17 +83,37 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
             if self.model.coef != self.coef {
                 self.model.coef = self.coef
             }
-        }
+         }
     }
     
-    
+    public init(){}
     init(withMat mat : Matiere) {
         
         self.model = mat
     }
     
     
+    var isEditing: Bool = false
     
+    private var copy: MatiereVM { MatiereVM(withMat: self.model) }
+    
+    var editedCopy: MatiereVM?
+    
+    
+    func onEditing(){
+        editedCopy = self.copy
+        isEditing = true
+    }
+    
+    func onEdited(isCancelled cancel: Bool = false) {
+        if !cancel {
+            if let editedCopy = editedCopy {
+                self.model = editedCopy.model
+            }
+        }
+        editedCopy = nil
+        isEditing = false
+    }
     
 }
 

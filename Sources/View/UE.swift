@@ -8,10 +8,12 @@
 import SwiftUI
 
 public struct UE: View {
+   @ObservedObject var bloc : BlocVM
    @ObservedObject var ue : UeVM
     public var body: some View {
         
         VStack(alignment:.leading){
+
             Divider()
             HStack(spacing: 20){
                 Text(ue.nom ).bold().font(.caption).padding()
@@ -25,7 +27,7 @@ public struct UE: View {
               Spacer()
                 Text(ue.totalMoyenne.description)
                 Spacer()
-                NavigationLink(destination: UEPage(ue: ue)) {
+                NavigationLink(destination: UEPage(ue: ue, bloc: bloc)) {
                     Image(systemName:   "square.and.pencil")
                 }
             }
@@ -42,7 +44,7 @@ struct UE_Previews: PreviewProvider {
             let ue =  DataStub().load()[0]
             let ueVM = UeVM(withUe: ue)
             
-            UE(ue: ueVM)
+            UE(bloc: BlocVM(withBloc: Bloc(nom: "Projet/Stage", ues: DataStub().loadUeStage_Proj())), ue: ueVM)
         }
    
 }
