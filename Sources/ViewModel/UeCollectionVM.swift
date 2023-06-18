@@ -38,11 +38,9 @@ class UeCollectionVM : ObservableObject,Identifiable,Equatable {
     @Published var someUesVM: [UeVM] = [] {
         didSet {
             let someModelUe = self.someUesVM.map({$0.model})
-                        if !self.model.ues.compare(to: someModelUe){
+                        if !self.model.ues.compare(to: someModelUe) {
                             self.model.ues = someUesVM.map({$0.model})
-                        }
-            
-
+             }
         }
     }
 
@@ -50,6 +48,8 @@ class UeCollectionVM : ObservableObject,Identifiable,Equatable {
     init(withUe ues : UeCollection) {
          self.model = ues
     }
+
+     
     
     
 }

@@ -9,11 +9,14 @@ import SwiftUI
 
 @main
 struct NoteApp: App {
-    @StateObject var ues : UeCollectionVM =  UeCollectionVM(withUe:  UeCollection(nom: "First", ues: DataStub().load()));
-    
+  var blocs = [
+                        BlocVM(withBloc:     Bloc(nom: "Total", ues: DataStub().load(),isUq: false)),
+                        BlocVM(withBloc:   Bloc(nom: "Projet/Stage", ues: DataStub().loadUeStage_Proj(), isUq: true))
+    ]
     var body: some Scene {
         WindowGroup {
-            Home(manager: ManagerVM(withUes: DataStub().load()))
+            Home(manager: ManagerVM( withBlocs: blocs
+        ))
         }
     }
 }

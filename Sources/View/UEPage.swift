@@ -9,11 +9,9 @@ import SwiftUI
 
 struct UEPage: View {
     @ObservedObject var ue: UeVM
-    @State private var isEditMode = false
-    @State private var showEditSheet = false
+    @ObservedObject var bloc: BlocVM
     
-     
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -32,84 +30,26 @@ struct UEPage: View {
                 }
                 
                 ScrollView {
-                    ForEach($ue.someMatieresVM) { $mat in
-                        MatiereUI(matiere: mat, ue : ue, islocked: true)
+                    ForEach(ue.someMatieresVM) { mat in
+                        MatiereUI(matiere: mat, ue : ue, bloc : bloc, islocked: true)
                     }
                 }
             }
             
         }
         .navigationBarItems(trailing: Button(action: {
-            showEditSheet = true
+           
+            self.ue.onEditing()
         }) {
-            Text("Edit")
+            Text( self.ue.isEditing ? "Done" : "Modifier")
         })
-        .sheet(isPresented: $showEditSheet) {
-            EditSheet(ue: ue, isEditMode: $isEditMode)
+        .sheet(isPresented: $ue.isEditing) {
+            EditSheet(ue: ue, isEditMode: $ue.isAdding)
         }
     }
 }
 
-struct EditSheet: View {
-    @ObservedObject var ue: UeVM
-    @Binding var isEditMode: Bool
-    @State private var coefficient: Double = 0.0
-    
-    var body: some View {
-         
-        NavigationView {
-            
-            VStack{
-                Section(header: Text("UE Info").font(.title)) {
-                    TextField("Description", text: $ue.nom)
-                    TextField("Coefficient", value: $ue.coef, format: .number)
-                                       
-                                    }
-                                    Divider()
-                Section(header: Text("Matieres").font(.title)) {
-                    ForEach(ue.someMatieresVM) { matiere in
-                        HStack{
-                            MatiereEditView(matiere:   matiere)
-                            Button(action: {
-                                // Ajouter une matiere
-                            }) {
-                                Text("Supprimer")
-                            }
-                        }
-                       
-                       
-                    }
-                    Spacer()
-                    Button(action: {
-                        // Ajouter une matiere
-                    }) {
-                        Text("Ajouter une matiere")
-                    }
-                }
-            }.padding().background(NoteColor().ue_back)
-            
-        }
-        .navigationBarItems(trailing: Button(action: {
-            isEditMode = false
-        }) {
-            Text("Done")
-        })
-        
-        
-    }
-    
-    struct MatiereEditView: View {
-        @ObservedObject var matiere: MatiereVM
-        
-        var body: some View {
-            VStack {
-                TextField("Nom", text: $matiere.name)
-                TextField("Coefficient", value: $matiere.coef, format: .number)
-                Divider()
-            }
-        }
-    }
-}
+
 
 
 
@@ -117,6 +57,9 @@ struct EditSheet: View {
 struct UEPage_Previews: PreviewProvider {
     static var previews: some View {
         
-        UEPage(ue: UeVM(withUe: Ue( nom: "Projet", matieres: DataStub().loadMartiereUE6(),coef: 15)))
+        UEPage(
+            ue: UeVM(withUe: Ue( nom: "Projet", matieres: DataStub().loadMartiereUE6(),coef: 15)),
+            bloc: BlocVM(withBloc: Bloc(nom: "", ues: DataStub().loadUeStage_Proj(), isUq: true))
+        )
     }
 }

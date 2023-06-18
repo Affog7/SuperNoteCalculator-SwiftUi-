@@ -10,6 +10,11 @@
 		EC3C2A492A333AEE00FC5B5E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A482A333AEE00FC5B5E /* DataManager.swift */; };
 		EC3C2A4D2A335A1200FC5B5E /* DataManagerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */; };
 		EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */; };
+		EC3C2A512A35120800FC5B5E /* BlocVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A502A35120800FC5B5E /* BlocVM.swift */; };
+		EC3C2A532A3522C000FC5B5E /* BlocCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A522A3522C000FC5B5E /* BlocCollectionVM.swift */; };
+		EC3C2A552A3522F100FC5B5E /* BlocCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A542A3522F100FC5B5E /* BlocCollection.swift */; };
+		EC3C2A572A39A46B00FC5B5E /* EditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A562A39A46B00FC5B5E /* EditSheet.swift */; };
+		EC3C2A592A39AA0900FC5B5E /* MatiereEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A582A39AA0900FC5B5E /* MatiereEditView.swift */; };
 		EC4D2D8B2A1F97C400E7C3A0 /* CapsuleUE.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4D2D8A2A1F97C400E7C3A0 /* CapsuleUE.swift */; };
 		EC4D2D8D2A20985000E7C3A0 /* MatiereVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4D2D8C2A20985000E7C3A0 /* MatiereVM.swift */; };
 		EC4D2D902A209AB900E7C3A0 /* MatiereCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4D2D8F2A209AB900E7C3A0 /* MatiereCollectionVM.swift */; };
@@ -38,6 +43,8 @@
 		EC880E4B2A1D099700D473EA /* UeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4A2A1D099700D473EA /* UeVM.swift */; };
 		EC880E4D2A1D11D800D473EA /* UeCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4C2A1D11D800D473EA /* UeCollectionVM.swift */; };
 		EC880E4F2A1D121A00D473EA /* UeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4E2A1D121A00D473EA /* UeCollection.swift */; };
+		ECA7C73D2A3F0D04004387FA /* BlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7C73C2A3F0D04004387FA /* BlockItem.swift */; };
+		ECA7C73F2A3F1794004387FA /* AddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7C73E2A3F1794004387FA /* AddSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,11 @@
 		EC3C2A482A333AEE00FC5B5E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerVM.swift; sourceTree = "<group>"; };
 		EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySwiftExtension.swift; sourceTree = "<group>"; };
+		EC3C2A502A35120800FC5B5E /* BlocVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocVM.swift; sourceTree = "<group>"; };
+		EC3C2A522A3522C000FC5B5E /* BlocCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocCollectionVM.swift; sourceTree = "<group>"; };
+		EC3C2A542A3522F100FC5B5E /* BlocCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocCollection.swift; sourceTree = "<group>"; };
+		EC3C2A562A39A46B00FC5B5E /* EditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheet.swift; sourceTree = "<group>"; };
+		EC3C2A582A39AA0900FC5B5E /* MatiereEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatiereEditView.swift; sourceTree = "<group>"; };
 		EC4D2D8A2A1F97C400E7C3A0 /* CapsuleUE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleUE.swift; sourceTree = "<group>"; };
 		EC4D2D8C2A20985000E7C3A0 /* MatiereVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatiereVM.swift; sourceTree = "<group>"; };
 		EC4D2D8F2A209AB900E7C3A0 /* MatiereCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatiereCollectionVM.swift; sourceTree = "<group>"; };
@@ -92,6 +104,8 @@
 		EC880E4A2A1D099700D473EA /* UeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeVM.swift; sourceTree = "<group>"; };
 		EC880E4C2A1D11D800D473EA /* UeCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeCollectionVM.swift; sourceTree = "<group>"; };
 		EC880E4E2A1D121A00D473EA /* UeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeCollection.swift; sourceTree = "<group>"; };
+		ECA7C73C2A3F0D04004387FA /* BlockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockItem.swift; sourceTree = "<group>"; };
+		ECA7C73E2A3F1794004387FA /* AddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +216,10 @@
 				EC880E472A1D072900D473EA /* edit.swift */,
 				EC4D2D8A2A1F97C400E7C3A0 /* CapsuleUE.swift */,
 				EC4D2D932A209EEC00E7C3A0 /* CapsuleMatiere.swift */,
+				EC3C2A562A39A46B00FC5B5E /* EditSheet.swift */,
+				EC3C2A582A39AA0900FC5B5E /* MatiereEditView.swift */,
+				ECA7C73C2A3F0D04004387FA /* BlockItem.swift */,
+				ECA7C73E2A3F1794004387FA /* AddSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +240,7 @@
 				EC880E3E2A1CF1F400D473EA /* Bloc.swift */,
 				EC880E4E2A1D121A00D473EA /* UeCollection.swift */,
 				EC4D2D912A209AE000E7C3A0 /* MatiereCollection.swift */,
+				EC3C2A542A3522F100FC5B5E /* BlocCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +262,8 @@
 				EC4D2D8F2A209AB900E7C3A0 /* MatiereCollectionVM.swift */,
 				EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */,
 				EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */,
+				EC3C2A502A35120800FC5B5E /* BlocVM.swift */,
+				EC3C2A522A3522C000FC5B5E /* BlocCollectionVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -385,23 +406,30 @@
 				EC880E2F2A1CDF8600D473EA /* Block.swift in Sources */,
 				EC3C2A492A333AEE00FC5B5E /* DataManager.swift in Sources */,
 				EC880E432A1CF3F800D473EA /* NoteColor.swift in Sources */,
+				EC3C2A552A3522F100FC5B5E /* BlocCollection.swift in Sources */,
 				EC880E3D2A1CEAE600D473EA /* MatiereUI.swift in Sources */,
 				EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */,
 				EC4D2D8D2A20985000E7C3A0 /* MatiereVM.swift in Sources */,
+				ECA7C73F2A3F1794004387FA /* AddSheet.swift in Sources */,
 				EC880E462A1CFC4600D473EA /* DataStub.swift in Sources */,
 				EC880E342A1CDFFA00D473EA /* Details.swift in Sources */,
+				EC3C2A512A35120800FC5B5E /* BlocVM.swift in Sources */,
 				EC880E482A1D072900D473EA /* edit.swift in Sources */,
 				EC880E4D2A1D11D800D473EA /* UeCollectionVM.swift in Sources */,
 				EC880E3F2A1CF1F400D473EA /* Bloc.swift in Sources */,
 				EC3C2A4D2A335A1200FC5B5E /* DataManagerVM.swift in Sources */,
+				EC3C2A572A39A46B00FC5B5E /* EditSheet.swift in Sources */,
 				EC880E2D2A1CDF6900D473EA /* Home.swift in Sources */,
 				EC880E312A1CDFA700D473EA /* UE.swift in Sources */,
 				EC4D2D942A209EEC00E7C3A0 /* CapsuleMatiere.swift in Sources */,
 				EC4D2D922A209AE000E7C3A0 /* MatiereCollection.swift in Sources */,
+				EC3C2A532A3522C000FC5B5E /* BlocCollectionVM.swift in Sources */,
 				EC880E022A1CDCAD00D473EA /* NoteApp.swift in Sources */,
 				EC880E392A1CE98200D473EA /* Matiere.swift in Sources */,
+				ECA7C73D2A3F0D04004387FA /* BlockItem.swift in Sources */,
 				EC4D2D902A209AB900E7C3A0 /* MatiereCollectionVM.swift in Sources */,
 				EC880E4B2A1D099700D473EA /* UeVM.swift in Sources */,
+				EC3C2A592A39AA0900FC5B5E /* MatiereEditView.swift in Sources */,
 				EC880E3B2A1CEAAC00D473EA /* UEPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
