@@ -85,6 +85,6 @@ struct CapsuleMatiere_Previews: PreviewProvider {
     static var previews: some View {
         
         ExpandingCapsuleViewMatiere(matiere: MatiereVM(withMat: Matiere(name: "Projet", moy: 12, coef: 9)),ue: UeVM(withUe: DataStub().loadUeStage_Proj()[0]),
-                                    bloc: BlocVM(withBloc: Bloc(nom: "", ues: DataStub().loadUeStage_Proj())) )
+                                    bloc: BlocVM(withBloc: Bloc(nom: "", ues: DataStub().loadUeStage_Proj(), isUq: true)) )
     }
 }

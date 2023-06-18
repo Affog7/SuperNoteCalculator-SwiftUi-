@@ -43,6 +43,8 @@
 		EC880E4B2A1D099700D473EA /* UeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4A2A1D099700D473EA /* UeVM.swift */; };
 		EC880E4D2A1D11D800D473EA /* UeCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4C2A1D11D800D473EA /* UeCollectionVM.swift */; };
 		EC880E4F2A1D121A00D473EA /* UeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4E2A1D121A00D473EA /* UeCollection.swift */; };
+		ECA7C73D2A3F0D04004387FA /* BlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7C73C2A3F0D04004387FA /* BlockItem.swift */; };
+		ECA7C73F2A3F1794004387FA /* AddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7C73E2A3F1794004387FA /* AddSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		EC880E4A2A1D099700D473EA /* UeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeVM.swift; sourceTree = "<group>"; };
 		EC880E4C2A1D11D800D473EA /* UeCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeCollectionVM.swift; sourceTree = "<group>"; };
 		EC880E4E2A1D121A00D473EA /* UeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeCollection.swift; sourceTree = "<group>"; };
+		ECA7C73C2A3F0D04004387FA /* BlockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockItem.swift; sourceTree = "<group>"; };
+		ECA7C73E2A3F1794004387FA /* AddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +218,8 @@
 				EC4D2D932A209EEC00E7C3A0 /* CapsuleMatiere.swift */,
 				EC3C2A562A39A46B00FC5B5E /* EditSheet.swift */,
 				EC3C2A582A39AA0900FC5B5E /* MatiereEditView.swift */,
+				ECA7C73C2A3F0D04004387FA /* BlockItem.swift */,
+				ECA7C73E2A3F1794004387FA /* AddSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				EC880E3D2A1CEAE600D473EA /* MatiereUI.swift in Sources */,
 				EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */,
 				EC4D2D8D2A20985000E7C3A0 /* MatiereVM.swift in Sources */,
+				ECA7C73F2A3F1794004387FA /* AddSheet.swift in Sources */,
 				EC880E462A1CFC4600D473EA /* DataStub.swift in Sources */,
 				EC880E342A1CDFFA00D473EA /* Details.swift in Sources */,
 				EC3C2A512A35120800FC5B5E /* BlocVM.swift in Sources */,
@@ -419,6 +426,7 @@
 				EC3C2A532A3522C000FC5B5E /* BlocCollectionVM.swift in Sources */,
 				EC880E022A1CDCAD00D473EA /* NoteApp.swift in Sources */,
 				EC880E392A1CE98200D473EA /* Matiere.swift in Sources */,
+				ECA7C73D2A3F0D04004387FA /* BlockItem.swift in Sources */,
 				EC4D2D902A209AB900E7C3A0 /* MatiereCollectionVM.swift in Sources */,
 				EC880E4B2A1D099700D473EA /* UeVM.swift in Sources */,
 				EC3C2A592A39AA0900FC5B5E /* MatiereEditView.swift in Sources */,

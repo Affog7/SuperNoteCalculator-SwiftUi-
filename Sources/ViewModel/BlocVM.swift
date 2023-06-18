@@ -39,6 +39,7 @@ class BlocVM : ObservableObject, Identifiable, Equatable, Hashable {
   ///  private var copy : MatiereVM
     private func onNotifyChanged(){
         for f in notificationFuncs.values {
+            print("moi")
                 f(self)
             }
         }
@@ -46,25 +47,34 @@ class BlocVM : ObservableObject, Identifiable, Equatable, Hashable {
     
     @Published  var totalMoyenne: Double = 0.0 {
         didSet{
-            let moy = updateTotalMoyenne()
+       let moy = updateTotalMoyenne()
+            print("Moy =\(moy)")
             if moy != self.totalMoyenne {
                 self.totalMoyenne = moy
-            }
+             }
+             self.onNotifyChanged()
         }
     }
     
+    @Published var isUnique : Bool = false {
+        didSet{
+            if self.isUnique != self.model.isUnique {
+                self.model.isUnique = self.isUnique
+            }
+        }
+    }
   public func updateTotalMoyenne()->Double {
 
-      let totalMoyenne = self.someUesVM.reduce(0.0) { $0 + Double($1.totalMoyenne) * Double($1.coef) }
+      let totalMoyenn = self.someUesVM.reduce(0.0) { $0 + Double($1.totalMoyenne) * Double($1.coef) }
       let totalCoef = self.someUesVM.reduce(0.0) { $0 + Double($1.coef) }
       
       print("bloc")
-      print(self.someUesVM.count)
-        return totalMoyenne / totalCoef
+      print( totalMoyenn / totalCoef)
+        return totalMoyenn / totalCoef
 
     }
     
-    @Published var model : Bloc = Bloc(nom: "Total", ues: DataStub().load()) {
+    @Published var model : Bloc = Bloc(nom: "Total", ues: DataStub().load(), isUq: false) {
         
         willSet(newValue) {
                     if !self.someUesVM.map({$0.model}).compare(to: newValue.ues){
@@ -84,6 +94,10 @@ class BlocVM : ObservableObject, Identifiable, Equatable, Hashable {
                 self.someUesVM.forEach { uevm in
                     uevm.subscribe(with: self, andWithFunction: onNotifyChanged(source:))
                  }
+            }
+            
+            if self.model.isUnique != self.isUnique {
+                self.isUnique = self.model.isUnique
             }
             
             let moy = updateTotalMoyenne()

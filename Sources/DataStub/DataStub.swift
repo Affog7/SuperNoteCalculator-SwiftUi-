@@ -14,7 +14,7 @@ public struct DataStub : DataManager{
             Ue( nom: "Insertion Professionnelle", matieres: loadMartiereUE3(),coef: 6),
             Ue( nom: "Technologies Mobiles 1", matieres: loadMartiereUE4(),coef:9),
             Ue( nom: "Technologies Mobiles 2", matieres: loadMartiereUE5(),coef:9),
-             
+       
         ]
     }
     

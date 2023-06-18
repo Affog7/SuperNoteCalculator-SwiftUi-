@@ -44,7 +44,7 @@ struct UE_Previews: PreviewProvider {
             let ue =  DataStub().load()[0]
             let ueVM = UeVM(withUe: ue)
             
-            UE(bloc: BlocVM(withBloc: Bloc(nom: "Projet/Stage", ues: DataStub().loadUeStage_Proj())), ue: ueVM)
+            UE(bloc: BlocVM(withBloc: Bloc(nom: "Projet/Stage", ues: DataStub().loadUeStage_Proj(),isUq: true)), ue: ueVM)
         }
    
 }

@@ -165,7 +165,6 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
     
     func onEditing(){
         editedCopy = self.copy
-        isAdding = false
         isEditing = true
     }
     
@@ -175,18 +174,17 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
                 self.model = editedCopy.model
             }
         }
-        editedCopy = nil
         isEditing = false
     }
     
-    var addedItem: MatiereVM?
+    var addedItem: MatiereVM? = MatiereVM(withMat: Matiere(name: "", moy: 0.0, coef: 1))
     
     @Published
     var isAdding: Bool = false
     
     func onAdding() {
         addedItem = MatiereVM()
-        isEditing = false
+        //isEditing = false
         isAdding = true
     }
     
@@ -210,7 +208,7 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
             }
         }
     }
-    
+
 }
 
 

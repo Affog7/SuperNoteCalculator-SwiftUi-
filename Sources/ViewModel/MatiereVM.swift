@@ -11,7 +11,7 @@ import Foundation
 class MatiereVM : ObservableObject, Identifiable, Equatable {
     
    
-        private var notificationFuncs: [AnyHashable:(MatiereVM) -> ()] = [:]
+    private var notificationFuncs: [AnyHashable:(MatiereVM) -> ()] = [:]
         
     
     public func subscribe(with subscriber: AnyHashable, andWithFunction function:@escaping (MatiereVM) -> ()) {
@@ -87,33 +87,35 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
     }
     
     public init(){}
+    
     init(withMat mat : Matiere) {
         
         self.model = mat
     }
     
     
-    var isEditing: Bool = false
     
-    private var copy: MatiereVM { MatiereVM(withMat: self.model) }
-    
-    var editedCopy: MatiereVM?
-    
-    
-    func onEditing(){
-        editedCopy = self.copy
-        isEditing = true
-    }
-    
-    func onEdited(isCancelled cancel: Bool = false) {
-        if !cancel {
-            if let editedCopy = editedCopy {
-                self.model = editedCopy.model
-            }
+    @Published
+        var isEditing: Bool = false
+        
+        private var copy: MatiereVM { MatiereVM(withMat: self.model) }
+        
+        var editedCopy: MatiereVM?
+        
+        func onEditing(){
+            editedCopy = self.copy
+            isEditing = true
         }
-        editedCopy = nil
-        isEditing = false
-    }
+        
+        func onEdited(isCancelled cancel: Bool = false) {
+            if !cancel {
+                if let editedCopy = editedCopy {
+                    self.model = editedCopy.model
+                }
+            }
+            editedCopy = nil
+            isEditing = false
+        }
     
 }
 

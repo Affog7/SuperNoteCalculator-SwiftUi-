@@ -10,8 +10,8 @@ import SwiftUI
 @main
 struct NoteApp: App {
   var blocs = [
-                        BlocVM(withBloc:     Bloc(nom: "Total", ues: DataStub().load())),
-                        BlocVM(withBloc:   Bloc(nom: "Projet/Stage", ues: DataStub().loadUeStage_Proj()))
+                        BlocVM(withBloc:     Bloc(nom: "Total", ues: DataStub().load(),isUq: false)),
+                        BlocVM(withBloc:   Bloc(nom: "Projet/Stage", ues: DataStub().loadUeStage_Proj(), isUq: true))
     ]
     var body: some Scene {
         WindowGroup {

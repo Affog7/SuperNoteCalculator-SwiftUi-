@@ -14,7 +14,13 @@ struct Home: View {
         NavigationView{
              
            VStack(alignment : .leading){
-                    // Block
+               
+               HStack {
+          
+                   Text("Calculette").bold().font(.title)
+               }
+               
+               // Block
                 Block(manager: manager )
  
                 
@@ -52,7 +58,7 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        let managerVM = ManagerVM(withBlocs: [BlocVM(withBloc: Bloc(nom: "Total", ues: DataStub().load())),BlocVM(withBloc: Bloc(nom: "Projet", ues: DataStub().loadUeStage_Proj()))])
+        let managerVM = ManagerVM(withBlocs: [BlocVM(withBloc: Bloc(nom: "Total", ues: DataStub().load(), isUq: false)),BlocVM(withBloc: Bloc(nom: "Projet", ues: DataStub().loadUeStage_Proj(),isUq: true))])
         Home(manager: managerVM )
     }
 }

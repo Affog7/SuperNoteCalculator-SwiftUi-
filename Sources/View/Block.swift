@@ -13,22 +13,21 @@ struct Block: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            
             HStack {
                 Image(systemName: "menucard.fill")
-                Text("Block").bold().font(.title)
+                Text("Blocs").bold().font(.title)
             }
-            Divider()
+            
+            Text("Vous devez avoir la moyenne à chacun de ces blocs pour avoir votre diplôme.").padding(.bottom)
+            BlockItem(total: .constant( manager.total), name: .constant("Total"))
+           
             ForEach(manager.blocs) { item in
-                HStack(spacing: 15) {
-                    Image(systemName: "rectangle.on.rectangle")
-                    Text( item.nom).font(.title3)
-                    Text( item.totalMoyenne.description)
-                    
-                    Image(systemName: "graduationcap.circle.fill")
-                    
+                if item.isUnique {
+                    BlockItem(total: .constant(item.totalMoyenne), name: .constant(item.nom))
+                    Divider()
                 }
-                
-                Divider()
+               
             }
           /*  Button(action: {
                 manager.blocs[0].someUesVM[0].someMatieresVM[0].moyenne += 3
@@ -38,14 +37,14 @@ struct Block: View {
             } ){
                 Text("zsdfghjk")
             } */
-        }
+        }.padding().background(NoteColor().ue_back).cornerRadius(10)
     }
 }
 struct Block_Previews: PreviewProvider {
     static var previews: some View {
         let blocs =  [
- BlocVM(withBloc: Bloc(nom: "Total", ues:DataStub().load())),
-BlocVM(withBloc: Bloc(nom: "Projet", ues: DataStub().loadUeStage_Proj()))]
+ BlocVM(withBloc: Bloc(nom: "Total", ues:DataStub().load(),isUq: false)),
+BlocVM(withBloc: Bloc(nom: "Projet", ues: DataStub().loadUeStage_Proj(), isUq: true))]
   
                               Block(manager: ManagerVM(withBlocs: blocs) )
         

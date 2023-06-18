@@ -10,11 +10,8 @@ import SwiftUI
 struct UEPage: View {
     @ObservedObject var ue: UeVM
     @ObservedObject var bloc: BlocVM
-    @State private var isEditMode = false
-    @State private var showEditSheet = false
     
-     
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -41,13 +38,13 @@ struct UEPage: View {
             
         }
         .navigationBarItems(trailing: Button(action: {
-            showEditSheet = true
+           
             self.ue.onEditing()
         }) {
-            Text("Edit")
+            Text( self.ue.isEditing ? "Done" : "Modifier")
         })
-        .sheet(isPresented: $showEditSheet) {
-            EditSheet(ue: ue, isEditMode: $isEditMode)
+        .sheet(isPresented: $ue.isEditing) {
+            EditSheet(ue: ue, isEditMode: $ue.isAdding)
         }
     }
 }
@@ -62,7 +59,7 @@ struct UEPage_Previews: PreviewProvider {
         
         UEPage(
             ue: UeVM(withUe: Ue( nom: "Projet", matieres: DataStub().loadMartiereUE6(),coef: 15)),
-            bloc: BlocVM(withBloc: Bloc(nom: "", ues: DataStub().loadUeStage_Proj()))
+            bloc: BlocVM(withBloc: Bloc(nom: "", ues: DataStub().loadUeStage_Proj(), isUq: true))
         )
     }
 }

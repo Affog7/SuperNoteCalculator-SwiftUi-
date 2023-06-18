@@ -31,6 +31,9 @@ class ManagerVM: ObservableObject, Hashable {
                }
     }
    
+    var total : Double {
+        return Double(blocs.reduce(0) { $0 + $1.totalMoyenne }) / Double(blocs.count)
+        }
     
     public init(withBlocs blocs: [BlocVM]){
         self.blocs = blocs

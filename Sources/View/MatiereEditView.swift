@@ -28,20 +28,20 @@ struct MatiereEditView: View {
             }
             Button(action: {
                 if self.matiere.isEditing {
-                    self.matiere.onEdited()
+                    print(self.matiere.coef)
+
+                    self.matiere.onEdited(isCancelled: true)
                 } else {
                     self.matiere.onEditing()
+                    
                 }
                 
             }) {
                 Text( self.matiere.isEditing ? "Done" : "Modifier")
             }
             
-            Button(action: {
-                
-            }){
-                Text("Supprimer")
-            }
+           
+            
         }
        
     }
