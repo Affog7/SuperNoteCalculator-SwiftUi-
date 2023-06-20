@@ -15,12 +15,13 @@ struct AddSheet: View {
                 Text("Nom : ")
                 TextField("Description", text: $mat.name)
              }
+            Divider()
             HStack{
                 Text("Coef : ")
                 TextField("Coefficient", value: $mat.coef, format: .number)
                 
             }
-        }
+        }.frame(height: 250)
         
     }
 }
