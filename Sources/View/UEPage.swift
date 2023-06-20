@@ -29,12 +29,23 @@ struct UEPage: View {
                     Text(ue.totalMoyenne.description)
                 }
                 
+                VStack(alignment: .leading){
+                    HStack{
+                        Label("Coefficient : \(ue.coef)", systemImage: "xmark.circle")
+                    }
+                    
+                    HStack{
+                        Label("Detail des notes", systemImage: "newspaper")
+                    }
+                }.padding(.top)
+                
+                
                 ScrollView {
                     ForEach(ue.someMatieresVM) { mat in
                         MatiereUI(matiere: mat, ue : ue, bloc : bloc, islocked: true)
                     }
                 }
-            }
+            }.frame(alignment: .leading)
             
         }
         .navigationBarItems(trailing:

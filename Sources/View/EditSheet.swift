@@ -34,7 +34,7 @@ struct EditSheet: View {
                         Button(action: {
                             self.ue.onDeleted(matiere)
                         }){
-                            Text("Supprimer")
+                            Text("Supprimer").foregroundColor(.red)
                         }
                     } 
                           
