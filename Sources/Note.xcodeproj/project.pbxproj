@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AAC8B632A41BB2B001A13AD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC8B622A41BB2B001A13AD /* Store.swift */; };
 		EC3C2A492A333AEE00FC5B5E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A482A333AEE00FC5B5E /* DataManager.swift */; };
 		EC3C2A4D2A335A1200FC5B5E /* DataManagerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */; };
 		EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AAC8B622A41BB2B001A13AD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		EC3C2A482A333AEE00FC5B5E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerVM.swift; sourceTree = "<group>"; };
 		EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySwiftExtension.swift; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 			children = (
 				EC3C2A472A333AD800FC5B5E /* Manager */,
 				EC880E492A1D098600D473EA /* ViewModel */,
-				EC880E442A1CFC2500D473EA /* DataStub */,
+				EC880E442A1CFC2500D473EA /* Data */,
 				EC880E402A1CF3CA00D473EA /* Asset.xcassets */,
 				EC880E422A1CF3F800D473EA /* NoteColor.swift */,
 				EC880E352A1CE89100D473EA /* Model */,
@@ -224,12 +226,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		EC880E442A1CFC2500D473EA /* DataStub */ = {
+		EC880E442A1CFC2500D473EA /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				EC880E452A1CFC4600D473EA /* DataStub.swift */,
+				0AAC8B622A41BB2B001A13AD /* Store.swift */,
 			);
-			path = DataStub;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		EC880E492A1D098600D473EA /* ViewModel */ = {
@@ -380,6 +383,7 @@
 				EC880E2F2A1CDF8600D473EA /* Block.swift in Sources */,
 				EC3C2A492A333AEE00FC5B5E /* DataManager.swift in Sources */,
 				EC880E432A1CF3F800D473EA /* NoteColor.swift in Sources */,
+				0AAC8B632A41BB2B001A13AD /* Store.swift in Sources */,
 				EC880E3D2A1CEAE600D473EA /* MatiereUI.swift in Sources */,
 				EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */,
 				EC4D2D8D2A20985000E7C3A0 /* MatiereVM.swift in Sources */,
