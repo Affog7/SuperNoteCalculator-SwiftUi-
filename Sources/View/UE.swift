@@ -28,7 +28,7 @@ public struct UE: View {
                 Text(ue.totalMoyenne.description)
                 Spacer()
                 NavigationLink(destination: UEPage(ue: ue, bloc: bloc)) {
-                    Image(systemName:   "square.and.pencil")
+                    Image(systemName: "square.and.pencil")
                 }
             }
             Divider()

@@ -20,13 +20,10 @@ struct EditSheet: View {
             VStack{
                 Section(header: Text("UE Info").font(.title)) {
                     
-                    
                     VStack{
                         TextField("Description", text: $ue.nom)
                         TextField("Coefficient", value: $ue.coef, format: .number)
                     }
-                    
-                    
                     
                 }
                 Divider()
@@ -51,13 +48,19 @@ struct EditSheet: View {
                 }
             }.padding().background(NoteColor().ue_back)
             
+                .toolbar{
+                    ToolbarItem(id: "Bloc", placement: .confirmationAction){
+                        Button(action: {
+                            self.ue.onEdited(isCancelled: true)
+                            print(self.ue.isEditing)
+                         }){
+                            Text("Done")
+                        }
+                    }
+                    
+                }
         }
-        .navigationBarItems(trailing:
-        Button(action: {
-            self.ue.onEdited()
-        }) {
-            Text( self.ue.isEditing ? "Done" : "Modifier")
-        })
+   
         
         // Feuille d'ajout
         .sheet(isPresented: $ue.isAdding){
@@ -83,6 +86,7 @@ struct EditSheet: View {
         }
         .navigationBarTitle("Ajout d'une nouvelle matière")
                     }
+            
                 }
         
     }}

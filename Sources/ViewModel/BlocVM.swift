@@ -24,6 +24,29 @@ class BlocVM : ObservableObject, Identifiable, Equatable, Hashable {
             self.objectWillChange.send()
         }
    
+    @Published
+        var isEditing: Bool = false
+        
+        private var copy: BlocVM { BlocVM(withBloc: self.model) }
+        
+        var editedCopy: BlocVM?
+        
+        func onEditing(){
+            editedCopy = self.copy
+           
+            isEditing = true
+        }
+        
+        func onEdited(isCancelled cancel: Bool = false) {
+            if !cancel {
+                if let editedCopy = editedCopy {
+                    self.model = editedCopy.model
+                }
+            }
+            editedCopy = nil
+            isEditing = false
+        }
+    
     //Emetteur // Broadcaster
     private var notificationFuncs: [AnyHashable:(BlocVM) -> ()] = [:]
 

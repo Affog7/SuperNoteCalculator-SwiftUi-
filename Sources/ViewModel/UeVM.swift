@@ -197,6 +197,8 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
            }
            addedItem = nil
            isAdding = false
+        
+        
        }
     
     func onDeleted(_ matiere:MatiereVM, isCancelled cancel: Bool = false) {

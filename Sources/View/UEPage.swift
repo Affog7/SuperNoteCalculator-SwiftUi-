@@ -37,15 +37,29 @@ struct UEPage: View {
             }
             
         }
-        .navigationBarItems(trailing: Button(action: {
+        .navigationBarItems(trailing:
+        Button(action: {
            
-            self.ue.onEditing()
+            if self.bloc.isEditing {
+
+                self.bloc.onEdited(isCancelled: false)
+                print("blocc \(self.bloc.totalMoyenne)")
+
+            } else {
+                
+                self.ue.onEditing()
+                self.bloc.onEditing()
+                
+            }
+
         }) {
-            Text( self.ue.isEditing ? "Done" : "Modifier")
+            Text( self.bloc.isEditing ? "Done" : "Modifier")
         })
         .sheet(isPresented: $ue.isEditing) {
             EditSheet(ue: ue, isEditMode: $ue.isAdding)
+              
         }
+        
     }
 }
 
