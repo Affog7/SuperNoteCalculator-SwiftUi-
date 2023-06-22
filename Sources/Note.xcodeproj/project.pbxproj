@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AAC8B632A41BB2B001A13AD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAC8B622A41BB2B001A13AD /* Store.swift */; };
+		0AB608BA2A42E45A0093568D /* blocs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0AB608B92A42E45A0093568D /* blocs.csv */; };
 		EC3C2A492A333AEE00FC5B5E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A482A333AEE00FC5B5E /* DataManager.swift */; };
 		EC3C2A4D2A335A1200FC5B5E /* DataManagerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */; };
 		EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */; };
@@ -38,6 +38,7 @@
 		EC880E4B2A1D099700D473EA /* UeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC880E4A2A1D099700D473EA /* UeVM.swift */; };
 		ECA7C73D2A3F0D04004387FA /* BlockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7C73C2A3F0D04004387FA /* BlockItem.swift */; };
 		ECA7C73F2A3F1794004387FA /* AddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA7C73E2A3F1794004387FA /* AddSheet.swift */; };
+		ECAD2E062A42398300F85940 /* FileSCVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAD2E052A42398300F85940 /* FileSCVManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AAC8B622A41BB2B001A13AD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		0AB608B92A42E45A0093568D /* blocs.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = blocs.csv; sourceTree = "<group>"; };
 		EC3C2A482A333AEE00FC5B5E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EC3C2A4C2A335A1200FC5B5E /* DataManagerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerVM.swift; sourceTree = "<group>"; };
 		EC3C2A4E2A34451200FC5B5E /* ArraySwiftExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySwiftExtension.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		EC880E4A2A1D099700D473EA /* UeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UeVM.swift; sourceTree = "<group>"; };
 		ECA7C73C2A3F0D04004387FA /* BlockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockItem.swift; sourceTree = "<group>"; };
 		ECA7C73E2A3F1794004387FA /* AddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSheet.swift; sourceTree = "<group>"; };
+		ECAD2E052A42398300F85940 /* FileSCVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSCVManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				EC3C2A482A333AEE00FC5B5E /* DataManager.swift */,
+				ECAD2E052A42398300F85940 /* FileSCVManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 		EC880DF52A1CDCAD00D473EA = {
 			isa = PBXGroup;
 			children = (
+				0AB608B92A42E45A0093568D /* blocs.csv */,
 				EC3C2A472A333AD800FC5B5E /* Manager */,
 				EC880E492A1D098600D473EA /* ViewModel */,
 				EC880E442A1CFC2500D473EA /* Data */,
@@ -230,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				EC880E452A1CFC4600D473EA /* DataStub.swift */,
-				0AAC8B622A41BB2B001A13AD /* Store.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				EC880E412A1CF3CA00D473EA /* Asset.xcassets in Resources */,
 				EC880E092A1CDCAE00D473EA /* Preview Assets.xcassets in Resources */,
+				0AB608BA2A42E45A0093568D /* blocs.csv in Resources */,
 				EC880E062A1CDCAE00D473EA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,7 +387,6 @@
 				EC880E2F2A1CDF8600D473EA /* Block.swift in Sources */,
 				EC3C2A492A333AEE00FC5B5E /* DataManager.swift in Sources */,
 				EC880E432A1CF3F800D473EA /* NoteColor.swift in Sources */,
-				0AAC8B632A41BB2B001A13AD /* Store.swift in Sources */,
 				EC880E3D2A1CEAE600D473EA /* MatiereUI.swift in Sources */,
 				EC3C2A4F2A34451200FC5B5E /* ArraySwiftExtension.swift in Sources */,
 				EC4D2D8D2A20985000E7C3A0 /* MatiereVM.swift in Sources */,
@@ -400,6 +403,7 @@
 				EC880E022A1CDCAD00D473EA /* NoteApp.swift in Sources */,
 				EC880E392A1CE98200D473EA /* Matiere.swift in Sources */,
 				ECA7C73D2A3F0D04004387FA /* BlockItem.swift in Sources */,
+				ECAD2E062A42398300F85940 /* FileSCVManager.swift in Sources */,
 				EC880E4B2A1D099700D473EA /* UeVM.swift in Sources */,
 				EC3C2A592A39AA0900FC5B5E /* MatiereEditView.swift in Sources */,
 				EC880E3B2A1CEAAC00D473EA /* UEPage.swift in Sources */,

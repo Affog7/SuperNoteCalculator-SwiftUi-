@@ -39,20 +39,14 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
         }
 
     
-    
-  ///  private var copy : MatiereVM
+
      func onNotifyChanged(){
         for f in notificationFuncs.values {
                 f(self)
             }
         }
     
-    //
-   /* public let id : UUID
-     var nom: String
-    var coef : Int
-    var matieres: [Matiere]
-*/
+ 
     @Published  var totalMoyenne: Double = 0.0 {
         didSet{
             let moy = updateTotalMoyenne()
@@ -142,18 +136,11 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
                          
             }
             
-            //self.notify()
+ 
           }
     }
 
-    /*@Published var matieresVM: [MatiereVM] = [] {
-            didSet {
-                let someModelmatiere = self.matieresVM.map({$0.model})
-                if !self.model.matieres.compare(to: someModelmatiere ){
-                    self.model.matieres = matieresVM.map({$0.model})
-                }
-            }
-        }*/
+ 
 
     public init (){}
     @Published
@@ -184,7 +171,6 @@ class UeVM : ObservableObject, Identifiable, Equatable,Hashable {
     
     func onAdding() {
         addedItem = MatiereVM()
-        //isEditing = false
         isAdding = true
     }
     

@@ -20,6 +20,10 @@ class BlocVM : ObservableObject, Identifiable, Equatable, Hashable {
     func onNotifyChanged(source:UeVM){
         if let index = self.model.ues.firstIndex(where: {$0 == source.model}) {
             self.model.ues[index] = source.model
+            BlocManager().updateBlock(bloc: self.model)
+            let app = Bundle.main.resourceURL
+            
+         //   print(app?.absoluteURL)
         }
             self.objectWillChange.send()
         }
@@ -59,7 +63,6 @@ class BlocVM : ObservableObject, Identifiable, Equatable, Hashable {
         }
 
     
-  ///  private var copy : MatiereVM
     private func onNotifyChanged(){
         for f in notificationFuncs.values {
             print("moi")

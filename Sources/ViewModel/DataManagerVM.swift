@@ -28,7 +28,8 @@ class ManagerVM: ObservableObject, Hashable {
         self.blocs =  blocs.map({BlocVM(withBloc: $0)})
         self.blocs.forEach { blocvm in
             blocvm.subscribe(with: self, andWithFunction: onNotifyChanged(source:))
-               }
+            
+        }
     }
    
     var total : Double {

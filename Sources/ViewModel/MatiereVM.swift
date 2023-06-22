@@ -23,8 +23,6 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
         }
 
     
-    
-  ///  private var copy : MatiereVM
     func notifyChanged(){
         for f in notificationFuncs.values {
                 f(self)
@@ -52,12 +50,7 @@ class MatiereVM : ObservableObject, Identifiable, Equatable {
             self.notifyChanged()
                 }
             }
-    /**
-     
-     var name: String
-     var moyenne: Float
-     var  coef : Int
-     */
+ 
     @Published
     var name: String = "" {
         didSet {
