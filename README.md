@@ -13,9 +13,9 @@ Welcome on the MaCalculette project!
 <img size=500 src="Documentation/doc_images/P_1.png" />   |<img size=500 src="Documentation/doc_images/P_2.png" />  | <img size=500 src="Documentation/doc_images/P_3.png" />  | <img size=500 src="Documentation/doc_images/P_4.png" />  
 
 
-  Ajout Matière à l'UE                 |   Page Detail UE       |  Page UE (2)                    |Sheet Modification (Modifier)                 
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-<img size=500 src="Documentation/doc_images/P_5.png" />   |<img size=500 src="Documentation/doc_images/V_1.mp4?raw=true" />  | <img size=500 src="Documentation/doc_images/V_2.mp4" />  | <img size=500 src="Documentation/doc_images/V_3.mp4" />  
+  Ajout Matière à l'UE                 |    DEMO               
+:-------------------------:|:-------------------------:
+<img height=200 src="Documentation/doc_images/P_5.png" />   | <a href="Documentation/doc_images/videooo.mp4">Regardez un demo</a>  <video controls="" src="Documentation/doc_images/videooo.mp4?raw=true"></video>  
 ## Directory Structure
 ```
 source
